@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <p v-text="msg" title="haha"></p>
+    <p v-html="tag" title="hehe"></p>
+    <input type="text" v-model="car.brand">
+    <button v-on:click="clickMe">click me</button>
+    <p>大家好</p>
+    <p>message内容是:{{msg}}</p>
+    <p>{{car.brand}}</p>
+    <p v-text="car.brand"></p>
+    <p v-text="car.color"></p>
+</div>
+<script src="./src/watcher.js"></script>
+<script src="./src/compile.js"></script>
+<script src="./src/observer.js"></script>
+<script src="./src/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello world',
+            tag: '<h3>haha</h3>',
+            car:{
+                brand:'奔驰',
+                color:'yellow'
+            }
+        },
+        //'this' will point to vue instance in methods
+        methods: {
+            clickMe() {
+                console.log(this.$data.msg)
+            }
+        }
+    })
+</script>
+</body>
+</html>
